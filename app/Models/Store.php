@@ -22,13 +22,6 @@ class Store extends Model
     ];
 
     /**
-     * @var string[]
-     */
-    protected $with = [
-        'products'
-    ];
-
-    /**
      * @return HasMany
      */
     public function products(): HasMany
