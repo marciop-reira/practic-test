@@ -25,9 +25,9 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:60', 'min:3'],
-            'value' => ['required', 'integer', 'max:6', 'min:2'],
+            'value' => ['required', 'digits_between:2,6'],
             'store_id' => ['required', 'exists:stores,id'],
-            'active' => ['required', 'booelan'],
+            'active' => ['required', 'boolean'],
         ];
     }
 }
