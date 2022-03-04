@@ -25,6 +25,13 @@ class Product extends Model
     ];
 
     /**
+     * @var string[]
+     */
+    protected $casts = [
+        'active' => 'boolean'
+    ];
+
+    /**
      * @return BelongsTo
      */
     public function store(): BelongsTo
