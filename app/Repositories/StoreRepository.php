@@ -30,7 +30,7 @@ class StoreRepository implements StoreRepositoryInterface
      */
     public function getAllStores()
     {
-        return $this->entity->paginate();
+        return $this->entity->with('products')->paginate();
     }
 
     /**
@@ -39,7 +39,7 @@ class StoreRepository implements StoreRepositoryInterface
      */
     public function getStoreById(int $id)
     {
-        return $this->entity->findOrFail($id);
+        return $this->entity->with('products')->findOrFail($id);
     }
 
     /**
