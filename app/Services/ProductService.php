@@ -46,7 +46,11 @@ class ProductService
      */
     public function createProduct(array $data)
     {
-        return $this->productRepository->createProduct($data);
+        $product = $this->productRepository->createProduct($data);
+
+        $product->sendCreateUpdateProductNotification();
+
+        return $product;
     }
 
     /**
@@ -57,7 +61,9 @@ class ProductService
     public function updateProduct(int $id, array $data)
     {
         $product = $this->getProductById($id);
-        return $this->productRepository->updateProduct($product, $data);
+        if ($this->productRepository->updateProduct($product, $data)) {
+            $product->sendCreateUpdateProductNotification();
+        }
     }
 
     /**
