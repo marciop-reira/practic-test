@@ -25,9 +25,9 @@ class UpdateProductRequest extends FormRequest
     {
         return [
             'name' => ['max:60', 'min:3'],
-            'value' => ['integer', 'max:6', 'min:2'],
+            'value' => ['integer', 'digits_between:2,6'],
             'store_id' => ['exists:stores,id'],
-            'active' => ['booelan'],
+            'active' => ['boolean'],
         ];
     }
 }
