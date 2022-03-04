@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use App\Notifications\CreateUpdateProductNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Notification;
 
 /**
  *
@@ -37,5 +39,10 @@ class Product extends Model
     public function store(): BelongsTo
     {
         return $this->belongsTo(Store::class);
+    }
+
+    public function sendCreateUpdateProductNotification()
+    {
+        Notification::send($this->store, new CreateUpdateProductNotification($this));
     }
 }
