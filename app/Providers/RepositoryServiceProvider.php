@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Repositories\Contracts\ProductRepositoryInterface;
 use App\Repositories\Contracts\StoreRepositoryInterface;
+use App\Repositories\ProductRepository;
 use App\Repositories\StoreRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,10 +25,10 @@ class RepositoryServiceProvider extends ServiceProvider
             StoreRepository::class
         );
 
-//        $this->app->bind(
-//            Produ::class,
-//            ProductRepository::class
-//        );
+        $this->app->bind(
+            ProductRepositoryInterface::class,
+            ProductRepository::class
+        );
     }
 
     /**
