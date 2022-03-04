@@ -16,7 +16,7 @@ class ProductFactory extends Factory
         return [
             'store_id' => $this->faker->numberBetween(1, 1),
             'name' => $this->faker->name,
-            'value' => $this->faker->numberBetween(1, 999999),
+            'value' => $this->faker->numberBetween(10, 100),
             'active' => $this->faker->boolean,
         ];
     }
