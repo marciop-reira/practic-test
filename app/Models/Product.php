@@ -27,13 +27,6 @@ class Product extends Model
     /**
      * @var string[]
      */
-    protected $with = [
-        'store'
-    ];
-
-    /**
-     * @var string[]
-     */
     protected $casts = [
         'active' => 'boolean'
     ];
