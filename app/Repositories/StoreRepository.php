@@ -52,21 +52,21 @@ class StoreRepository implements StoreRepositoryInterface
     }
 
     /**
-     * @param object $entity
+     * @param object $store
      * @param array $data
      * @return mixed
      */
-    public function updateStore(object $entity, array $data)
+    public function updateStore(object $store, array $data)
     {
-        return $entity->update($data);
+        return $store->update($data);
     }
 
     /**
-     * @param object $entity
+     * @param object $store
      * @return mixed
      */
-    public function destroyStore(object $entity)
+    public function destroyStore(object $store)
     {
-        return $entity->delete();
+        return $store->delete();
     }
 }
