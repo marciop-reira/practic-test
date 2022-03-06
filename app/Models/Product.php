@@ -41,8 +41,8 @@ class Product extends Model
         return $this->belongsTo(Store::class);
     }
 
-    public function sendCreateUpdateProductNotification()
+    public function sendCreateUpdateProductNotification(string $action)
     {
-        Notification::send($this->store, new CreateUpdateProductNotification($this));
+        Notification::send($this->store, new CreateUpdateProductNotification($this, $action));
     }
 }
