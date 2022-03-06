@@ -20,15 +20,21 @@ class CreateUpdateProductNotification extends Notification implements ShouldQueu
      * @var Product
      */
     private $product;
+    
+    /**
+     * @var string
+     */
+    private $action;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Product $product)
+    public function __construct(Product $product, string $action)
     {
         $this->product = $product;
+        $this->action = $action;
     }
 
     /**
@@ -51,9 +57,9 @@ class CreateUpdateProductNotification extends Notification implements ShouldQueu
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject(Lang::get('NEW PRODUCT CREATED/UPDATED'))
+                    ->subject(Lang::get('NEW PRODUCT '.strtoupper($this->action)))
                     ->greeting(Lang::get('Hello, :name!', ['name' => $this->product->store->name]))
-                    ->greeting(Lang::get('A NEW PRODUCT HAS BEEN CREATED/UPDATED.'))
+                    ->greeting(Lang::get('A NEW PRODUCT HAS BEEN '.strtoupper($this->action)))
                     ->line(Lang::get('Product name: :name', ['name' => $this->product->name]))
                     ->line(Lang::get('Product value: :value', ['value' => $this->product->value]))
                     ->line(Lang::get('Product active: :active', ['active' => $this->product->active]))
