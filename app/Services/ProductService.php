@@ -48,7 +48,7 @@ class ProductService
     {
         $product = $this->productRepository->createProduct($data);
 
-        $product->sendCreateUpdateProductNotification();
+        $product->sendCreateUpdateProductNotification('created');
 
         return $product;
     }
@@ -62,7 +62,7 @@ class ProductService
     {
         $product = $this->getProductById($id);
         if ($this->productRepository->updateProduct($product, $data)) {
-            $product->sendCreateUpdateProductNotification();
+            $product->sendCreateUpdateProductNotification('updated');
         }
     }
 
